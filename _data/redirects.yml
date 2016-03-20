@@ -1,0 +1,17 @@
+- title: Latest Vim official binary for Windows x86
+  path: vim/vim-win32-installer/latest/x86
+
+- title: Latest Vim official binary for Windows x64
+  path: vim/vim-win32-installer/latest/x64
+
+- title: Latest Vim +kaoriya binary for Windows 32bit
+  path: koron/vim-kaoriya/latest/win32
+
+- title: Latest Vim +kaoriya binary for Windows 64bit
+  path: koron/vim-kaoriya/latest/win64
+
+- title: Vim 7.3 +kaoriya final binary (7.3.1316) for Windows 32bit
+  path: koron/vim-kaoriya/vim73/final/win32
+
+- title: Vim 7.3 +kaoriya final binary (7.3.1316) for Windows 64bit
+  path: koron/vim-kaoriya/vim73/final/win64
