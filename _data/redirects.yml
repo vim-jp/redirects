@@ -10,6 +10,9 @@
 - title: Latest Vim +kaoriya binary for Windows 64bit
   path: koron/vim-kaoriya/latest/win64
 
+- title: Latest MacVim +kaoriya binary for MacOSX
+  path: splhack/macvim-kaoriya/latest
+
 - title: Vim 7.3 +kaoriya final binary (7.3.1316) for Windows 32bit
   path: koron/vim-kaoriya/vim73/final/win32
 
