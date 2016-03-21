@@ -12,6 +12,12 @@
     repo: vim-win32-installer
     name_pattern: '_x64\.zip$'
 
+- title: Stable Vim official binary for Windows x86
+  path: vim/vim-win32-installer/stable/x86
+
+- title: Stable Vim official binary for Windows x64
+  path: vim/vim-win32-installer/stable/x64
+
 - title: Latest Vim +kaoriya binary for Windows 32bit
   path: koron/vim-kaoriya/latest/win32
   github_release:
