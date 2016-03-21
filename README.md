@@ -17,7 +17,7 @@
 
 ```
 $ cd vim-jp/redirects
-$ go run _scripts/check_release/main.go
+$ go run _scripts/vim_jp-redirects-update/main.go
 $ git add .
 $ git commit -m "awesome comments"
 $ git push
