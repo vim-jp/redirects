@@ -113,6 +113,12 @@ func processRedirect(d redirect) {
 }
 
 func main() {
+	if v, ok := os.LookupEnv("GITHUB_USERNAME"); ok {
+		github.DefaultClient.Username = v
+	}
+	if v, ok := os.LookupEnv("GITHUB_TOKEN"); ok {
+		github.DefaultClient.Token = v
+	}
 	targets, err := loadData(dataFile)
 	if err != nil {
 		log.Fatal(err)
