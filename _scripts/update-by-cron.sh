@@ -2,7 +2,7 @@
 #
 # Update vim-jp/redirects by cron.
 #
-# Usage: cron-update.sh {WORKDIR}
+# Usage: update-by-cron.sh {WORKDIR}
 
 set -e
 
@@ -30,7 +30,12 @@ else
 fi
 
 # Update repository.
-go run _scripts/vim_jp-redirects-update/main.go
+cmd=$(which vim_jp-redirects-update)
+if [ "x$cmd" != "x" ] ; then
+  go run _scripts/vim_jp-redirects-update/main.go
+else
+  "$cmd"
+fi
 git add --update
 
 # Commit changes.
