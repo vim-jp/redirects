@@ -42,6 +42,5 @@ git add --update
 # Commit changes.
 if ! git diff --quiet HEAD ; then
   git commit -m "Updated by cron on $(hostname -s) at $(date "+%Y/%m/%d %H:%M %Z")"
-  # Disabled for debug.
   git push --quiet
 fi
