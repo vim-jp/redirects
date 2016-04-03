@@ -15,8 +15,9 @@ USER_EMAIL="redirects+cron%$(hostname -s)@vim-jp.org"
 # Setup working directory and cd to it.
 if [ -d "$DIR" ] ; then
   cd "$DIR"
-  git checkout gh-pages
-  git pull -p
+  git checkout -q gh-pages
+  git fetch -q -p
+  git merge -q --ff-only @{u}
 else
   parent=$(dirname "$DIR")
   if [ ! -d "$parent" ] ; then
@@ -31,7 +32,7 @@ fi
 
 # Update repository.
 cmd=$(which vim_jp-redirects-update)
-if [ "x$cmd" != "x" ] ; then
+if [ "x$cmd" = "x" ] ; then
   go run _scripts/vim_jp-redirects-update/main.go
 else
   "$cmd"
@@ -42,5 +43,5 @@ git add --update
 if ! git diff --quiet HEAD ; then
   git commit -m "Updated by cron on $(hostname -s) at $(date "+%Y/%m/%d %H:%M %Z")"
   # Disabled for debug.
-  #git push --quiet
+  git push --quiet
 fi
