@@ -15,6 +15,8 @@ USER_EMAIL="redirects+cron%$(hostname -s)@vim-jp.org"
 # Setup working directory and cd to it.
 if [ -d "$DIR" ] ; then
   cd "$DIR"
+  git checkout gh-pages
+  git pull -p
 else
   parent=$(dirname "$DIR")
   if [ ! -d "$parent" ] ; then
