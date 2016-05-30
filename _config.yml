@@ -15,7 +15,7 @@ future: true
 
 ### Plugins
 gems:
-  - jekyll-redirect-from
+  #- jekyll-redirect-from
 
 ### Outputting
 permalink: pretty

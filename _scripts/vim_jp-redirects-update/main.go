@@ -18,6 +18,7 @@ var pageTmpl = template.Must(template.New("page").Parse(`---
 title: {{.Title}}
 redirect_to:
   - {{.RedirectURL}}
+layout: redirect
 ---
 `))
 
