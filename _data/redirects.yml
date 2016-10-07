@@ -56,3 +56,9 @@
 
 - title: Vim 7.4 +kaoriya oldest binary (7.4.0) for Windows 64bit
   path: koron/vim-kaoriya/vim74/oldest/win64
+
+- title: Vim 8.0 +kaoriya oldest binary (8.0.0003) for Windows 32bit
+  path: koron/vim-kaoriya/vim80/oldest/win32
+
+- title: Vim 8.0 +kaoriya oldest binary (8.0.0003) for Windows 64bit
+  path: koron/vim-kaoriya/vim80/oldest/win64
