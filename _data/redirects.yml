@@ -23,14 +23,14 @@
   github_release:
     owner: koron
     repo: vim-kaoriya
-    name_pattern: '-win32-.*\.zip$'
+    name_pattern: '-win32-.*\d\.zip$'
 
 - title: Latest Vim +kaoriya binary for Windows 64bit
   path: koron/vim-kaoriya/latest/win64
   github_release:
     owner: koron
     repo: vim-kaoriya
-    name_pattern: '-win64-.*\.zip$'
+    name_pattern: '-win64-.*\d\.zip$'
 
 - title: Latest MacVim +kaoriya binary for MacOSX
   path: splhack/macvim-kaoriya/latest
