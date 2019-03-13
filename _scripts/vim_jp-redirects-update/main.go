@@ -1,9 +1,13 @@
 package main
 
 import (
+	"crypto/sha1"
+	"encoding/hex"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"regexp"
 	"sync"
@@ -18,6 +22,8 @@ var pageTmpl = template.Must(template.New("page").Parse(`---
 title: {{.Title}}
 redirect_to:
   - {{.RedirectURL}}
+hash:
+  sha1: {{.Sha1Hash}}
 layout: redirect
 ---
 `))
@@ -42,6 +48,7 @@ type githubRelease struct {
 type tmplData struct {
 	Title       string
 	RedirectURL string
+	Sha1Hash    string
 }
 
 func loadData(name string) ([]redirect, error) {
@@ -77,9 +84,13 @@ func fetchRedirect(d redirect) (*github.Asset, error) {
 	return nil, nil
 }
 
-func updateRedirect(d redirect, a *github.Asset) error {
+func updateRedirect(d redirect, a *github.Asset, bin io.ReadCloser) error {
 	if a.State != "uploaded" {
 		return fmt.Errorf("not uploaded yet: %s", d.Path)
+	}
+	sha1hash, err := calcSha1Hash(bin)
+	if err != nil {
+		return err
 	}
 	name := d.Path + ".html"
 	f, err := os.Create(name)
@@ -90,11 +101,21 @@ func updateRedirect(d redirect, a *github.Asset) error {
 	err = pageTmpl.Execute(f, tmplData{
 		Title:       d.Title,
 		RedirectURL: a.DownloadURL,
+		Sha1Hash:    sha1hash,
 	})
 	if err != nil {
 		return nil
 	}
 	return nil
+}
+
+func calcSha1Hash(r io.ReadCloser) (string, error) {
+	w := sha1.New()
+	if _, err := io.Copy(w, r); err != nil {
+		return "", err
+	}
+	hash := hex.EncodeToString(w.Sum(nil))
+	return hash, nil
 }
 
 func processRedirect(d redirect) {
@@ -106,11 +127,25 @@ func processRedirect(d redirect) {
 	if a == nil {
 		return
 	}
-	err = updateRedirect(d, a)
+	bin, err := fetchReleaseBinary(a)
+	if err != nil {
+		log.Printf("fetch release hash failed for %s: %s", d.Path, err)
+		return
+	}
+	defer bin.Close()
+	err = updateRedirect(d, a, bin)
 	if err != nil {
 		log.Printf("update failed for %s: %s", d.Path, err)
 		return
 	}
+}
+
+func fetchReleaseBinary(a *github.Asset) (io.ReadCloser, error) {
+	resp, err := http.DefaultClient.Get(a.DownloadURL)
+	if err != nil {
+		return nil, err
+	}
+	return resp.Body, nil
 }
 
 func main() {
