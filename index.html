@@ -6,8 +6,9 @@ title: Redirects
 
 <ul>
 {% for r in site.data.redirects %}
-<li>{{r.title | liquify}}<br />
-  <a href="{{site.github.url}}/{{r.path}}/">{{site.github.url}}/{{r.path}}/</a></li>
+<li>{{r.title | liquify}}<br>
+HTML: <a href="{{site.github.url}}/{{r.path}}/">{{site.github.url}}/{{r.path}}/</a>
+{% if r.json_path %}<br>JSON: <a href="{{site.github.url}}/{{r.json_path}}">{{site.github.url}}/{{r.json_path}}</a>{% endif %}</li>
 {% endfor %}
 </ul>
 

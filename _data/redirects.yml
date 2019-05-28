@@ -1,5 +1,6 @@
 - title: Latest Vim official binary for Windows x86
   path: vim/vim-win32-installer/latest/x86
+  json_path: vim/vim-win32-installer/latest/x86.json
   github_release:
     owner: vim
     repo: vim-win32-installer
@@ -7,6 +8,7 @@
 
 - title: Latest Vim official binary for Windows x64
   path: vim/vim-win32-installer/latest/x64
+  json_path: vim/vim-win32-installer/latest/x64.json
   github_release:
     owner: vim
     repo: vim-win32-installer
@@ -20,6 +22,7 @@
 
 - title: Latest Vim +kaoriya binary for Windows 32bit
   path: koron/vim-kaoriya/latest/win32
+  json_path: koron/vim-kaoriya/latest/win32.json
   github_release:
     owner: koron
     repo: vim-kaoriya
@@ -27,6 +30,7 @@
 
 - title: Latest Vim +kaoriya binary for Windows 64bit
   path: koron/vim-kaoriya/latest/win64
+  json_path: koron/vim-kaoriya/latest/win64.json
   github_release:
     owner: koron
     repo: vim-kaoriya
@@ -34,6 +38,7 @@
 
 - title: Latest MacVim +kaoriya binary for MacOSX
   path: splhack/macvim-kaoriya/latest
+  json_path: splhack/macvim-kaoriya/latest.json
   github_release:
     owner: splhack
     repo: macvim-kaoriya
