@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -40,8 +41,8 @@ type githubRelease struct {
 }
 
 type tmplData struct {
-	Title       string
-	RedirectURL string
+	Title       string `json:"title"`
+	RedirectURL string `json:"redirect_url"`
 }
 
 func loadData(name string) ([]redirect, error) {
@@ -77,7 +78,7 @@ func fetchRedirect(d redirect) (*github.Asset, error) {
 	return nil, nil
 }
 
-func updateRedirect(d redirect, a *github.Asset) error {
+func updateRedirectHTML(d redirect, a *github.Asset) error {
 	if a.State != "uploaded" {
 		return fmt.Errorf("not uploaded yet: %s", d.Path)
 	}
@@ -97,6 +98,23 @@ func updateRedirect(d redirect, a *github.Asset) error {
 	return nil
 }
 
+func updateRedirectJSON(d redirect, a *github.Asset) error {
+	if a.State != "uploaded" {
+		return fmt.Errorf("not uploaded yet: %s", d.Path)
+	}
+	name := d.Path + ".json"
+	f, err := os.Create(name)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	enc := json.NewEncoder(f)
+	return enc.Encode(tmplData{
+		Title:       d.Title,
+		RedirectURL: a.DownloadURL,
+	})
+}
+
 func processRedirect(d redirect) {
 	a, err := fetchRedirect(d)
 	if err != nil {
@@ -106,9 +124,14 @@ func processRedirect(d redirect) {
 	if a == nil {
 		return
 	}
-	err = updateRedirect(d, a)
+	err = updateRedirectHTML(d, a)
 	if err != nil {
-		log.Printf("update failed for %s: %s", d.Path, err)
+		log.Printf("failed to update .html for %s: %s", d.Path, err)
+		return
+	}
+	err = updateRedirectJSON(d, a)
+	if err != nil {
+		log.Printf("failed to update .json for %s: %s", d.Path, err)
 		return
 	}
 }
