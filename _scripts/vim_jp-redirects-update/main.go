@@ -126,12 +126,12 @@ func processRedirect(d redirect) {
 	}
 	err = updateRedirectHTML(d, a)
 	if err != nil {
-		log.Printf("update failed for %s: %s", d.Path, err)
+		log.Printf("failed to update .html for %s: %s", d.Path, err)
 		return
 	}
 	err = updateRedirectJSON(d, a)
 	if err != nil {
-		log.Printf("update failed for %s: %s", d.Path, err)
+		log.Printf("failed to update .json for %s: %s", d.Path, err)
 		return
 	}
 }
