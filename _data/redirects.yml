@@ -36,7 +36,15 @@
     repo: vim-kaoriya
     name_pattern: '-win64-.*\d\.zip$'
 
-- title: Latest MacVim +kaoriya binary for MacOSX
+- title: Latest MacVim binary for macOS
+  path: macvim-dev/macvim/latest
+  json_path: macvim-dev/macvim/latest.json
+  github_release:
+    owner: macvim-dev
+    repo: macvim
+    name_pattern: '\.dmg$'
+
+- title: Latest MacVim +kaoriya binary for macOS
   path: splhack/macvim-kaoriya/latest
   json_path: splhack/macvim-kaoriya/latest.json
   github_release:
