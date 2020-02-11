@@ -14,6 +14,14 @@
     repo: vim-win32-installer
     name_pattern: '_x64\.zip$'
 
+- title: Latest AppImage for Linux
+  path: vim/vim-appimage/latest
+  json_path: vim/vim-appimage/latest.json
+  github_release:
+    owner: vim
+    repo: vim-appimage
+    name_pattern: '\.AppImage$'
+
 - title: Stable Vim official binary for Windows x86
   path: vim/vim-win32-installer/stable/x86
 
