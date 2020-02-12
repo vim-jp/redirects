@@ -2,7 +2,7 @@ name: Redirect Updater
 
 on:
   schedule:
-  - cron:  '30 18 * * *'
+  - cron:  '30 0 * * *'
   # - cron:  '*/5 * * * *'
 jobs:
   build:
