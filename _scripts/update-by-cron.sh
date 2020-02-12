@@ -6,7 +6,8 @@
 
 set -e
 
-REPO="git@github.com:vim-jp/redirects.git"
+# REPO="git@github.com:vim-jp/redirects.git"
+REPO="git@github.com:0Delta/redirects.git"
 
 DIR=$1 ; shift
 USER_NAME="redirects cron updater"
