@@ -2,8 +2,8 @@ name: Redirect Updater
 
 on:
   schedule:
-  - cron:  '*/5 * * * *'
-  # - cron:  '30 18 * * *'
+  - cron:  '30 18 * * *'
+  # - cron:  '*/5 * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
