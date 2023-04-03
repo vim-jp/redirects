@@ -50,7 +50,15 @@
   github_release:
     owner: macvim-dev
     repo: macvim
-    name_pattern: '\.dmg$'
+    name_pattern: 'MacVim\.dmg$'
+
+- title: Latest MacVim binary for legacy macOS
+  path: macvim-dev/macvim-legacy/latest
+  json_path: macvim-dev/macvim-legacy/latest.json
+  github_release:
+    owner: macvim-dev
+    repo: macvim
+    name_pattern: 'MacVim_10\.9\.dmg$'
 
 - title: Latest MacVim +kaoriya binary for macOS
   path: splhack/macvim-kaoriya/latest
