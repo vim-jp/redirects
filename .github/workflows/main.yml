@@ -4,18 +4,25 @@ on:
   schedule:
   - cron:  '30 0 * * *'
   # - cron:  '*/5 * * * *'
+
 jobs:
   build:
     runs-on: ubuntu-latest
     name: run
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v4
       with:
         ref: 'gh-pages'
 
-    - name: Golang Action
-      uses: cedrickring/golang-action@1.4.1
-  
+    - name: Setup Golang
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: 'go.mod'
+
+    - name: Update redirects
+      run: make
+
     - name: Commit files
       run: |
         git config --local user.email "redirects-action@vim-jp.org"
@@ -23,12 +30,6 @@ jobs:
         git add --update
         if ! git diff --quiet HEAD ; then
           DATE=$(date "+%Y/%m/%d %H:%M %Z")
-          git commit -m "Updated by GithubActions at ${DATE}"    
-          git push 
+          git commit -m "Updated by GithubActions at ${DATE}"
+          git push
         fi
-
-    # - name: Push changes
-    #   uses: ad-m/github-push-action@master
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     branch: 'gh-pages'
