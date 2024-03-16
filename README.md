@@ -5,13 +5,7 @@
 ### Pre requirements
 
 *   of course checkout this [vim-jp/redirects][1] repo
-*   [go 1.5.3 or above (1.6 is recommended)][2]
-*   golang external packages
-
-    ```
-    $ go get -u github.com/koron/go-github
-    $ go get -u gopkg.in/yaml.v2
-    ```
+*   [go 1.16 or above][2]
 
 ### Update redirects
 
