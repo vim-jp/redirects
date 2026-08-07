@@ -1,0 +1,6 @@
+github.com/koron/go-github v0.0.0-20160618135937-92fbbed2e046 h1:YjgY0oqB2nqyVckaRdLhOGslSgcsy0+DlSczAZpPPlM=
+github.com/koron/go-github v0.0.0-20160618135937-92fbbed2e046/go.mod h1:14+A+rOS/yG6PtS3DKcRYYM9tP0+zVghPxIzqOYBXks=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v2 v2.4.0 h1:D8xgwECY7CYvx+Y2n4sBz93Jn9JRvxdiyyo8CTfuKaY=
+gopkg.in/yaml.v2 v2.4.0/go.mod h1:RDklbk79AGWmwhnvt/jBztapEOGDOx6ZbXqjP6csGnQ=
